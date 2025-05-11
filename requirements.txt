@@ -1,0 +1,12 @@
+# Core dependencies
+torch
+numpy
+soundfile
+scipy
+
+# Audio processing libraries
+librosa
+
+# recommended for AudioQualityEnhancer
+demucs
+pedalboard
