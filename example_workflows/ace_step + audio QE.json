@@ -1,0 +1,644 @@
+{
+  "id": "88ac5dad-efd7-40bb-84fe-fbaefdee1fa9",
+  "revision": 0,
+  "last_node_id": 56,
+  "last_link_id": 131,
+  "nodes": [
+    {
+      "id": 40,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        241.70840454101562,
+        42.21126174926758
+      ],
+      "size": [
+        375,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            111
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            80
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            83
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "ace_step_v1_3.5b.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/ACE-Step_ComfyUI_repackaged/resolve/main/all_in_one/ace_step_v1_3.5b.safetensors?download=true",
+            "directory": "checkpoints"
+          }
+        ]
+      },
+      "widgets_values": [
+        "ace_step_v1_3.5b.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 44,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        850.0296020507812,
+        650.603759765625
+      ],
+      "size": [
+        197.712890625,
+        26
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 108
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            109
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "ConditioningZeroOut"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 45,
+      "type": "ModelSamplingSD3",
+      "pos": [
+        777.451416015625,
+        -76.79950714111328
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 111
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            112
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "ModelSamplingSD3"
+      },
+      "widgets_values": [
+        2.0000000000000004
+      ]
+    },
+    {
+      "id": 14,
+      "type": "TextEncodeAceStepAudio",
+      "pos": [
+        643.77880859375,
+        37.23932647705078
+      ],
+      "size": [
+        423.73724365234375,
+        508.7060546875
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            108,
+            110
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "TextEncodeAceStepAudio"
+      },
+      "widgets_values": [
+        "r&b, orchestra, flute, erotic, female voice,",
+        "[intro]\n\n[Verse]\nHave a good day\nhope you a clear way\nkeep going and not stay\nand sing a song of pray\n\n\n[ending]",
+        0.9000000000000001
+      ]
+    },
+    {
+      "id": 17,
+      "type": "EmptyAceStepLatentAudio",
+      "pos": [
+        794.3717651367188,
+        722.9579467773438
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "EmptyAceStepLatentAudio"
+      },
+      "widgets_values": [
+        93,
+        1
+      ]
+    },
+    {
+      "id": 49,
+      "type": "PreviewAudio",
+      "pos": [
+        1666.9971923828125,
+        54.857723236083984
+      ],
+      "size": [
+        270,
+        88
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 113
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 56,
+      "type": "AudioQualityEffects",
+      "pos": [
+        1158.773681640625,
+        381.112548828125
+      ],
+      "size": [
+        270,
+        322
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 131
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            129
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AudioQualityEffects"
+      },
+      "widgets_values": [
+        0,
+        1,
+        "C:\\Program Files (x86)\\sox-14-4-2\\sox.exe",
+        0,
+        true,
+        false,
+        true,
+        50,
+        50,
+        false,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        1102.2003173828125,
+        44.44386672973633
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 112
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 110
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 109
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        547584417332745,
+        "randomize",
+        50,
+        4,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 55,
+      "type": "AudioQualityEnhancer",
+      "pos": [
+        1465.1923828125,
+        379.3466796875
+      ],
+      "size": [
+        288.751953125,
+        394
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 129
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            126
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AudioQualityEnhancer"
+      },
+      "widgets_values": [
+        0.5,
+        true,
+        "htdemucs",
+        "cuda",
+        0.8800000000000001,
+        0.6,
+        0.4,
+        0.4,
+        0.4,
+        0.3,
+        0.2,
+        0.3,
+        1,
+        "Standard",
+        true
+      ]
+    },
+    {
+      "id": 51,
+      "type": "PreviewAudio",
+      "pos": [
+        1807.539306640625,
+        379.0686950683594
+      ],
+      "size": [
+        270,
+        88
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 126
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 18,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        1432.2003173828125,
+        54.44386672973633
+      ],
+      "size": [
+        150.93612670898438,
+        46
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 101
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            113,
+            131
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.32",
+        "Node name for S&R": "VAEDecodeAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 48,
+      "type": "MarkdownNote",
+      "pos": [
+        -364.8929443359375,
+        48.8909797668457
+      ],
+      "size": [
+        499.296875,
+        571.3455200195312
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "About ACE Step",
+      "properties": {},
+      "widgets_values": [
+        "[Tutorial](http://docs.comfy.org/tutorials/audio/ace-step/ace-step-v1) | [教程](http://docs.comfy.org/zh-CN/tutorials/audio/ace-step/ace-step-v1)\n\n\n### Model Download\n\nDownload the following model and save it to the **ComfyUI/models/checkpoints** folder.\n[ace_step_v1_3.5b.safetensors](https://huggingface.co/Comfy-Org/ACE-Step_ComfyUI_repackaged/blob/main/all_in_one/ace_step_v1_3.5b.safetensors)\n\n\n### Multilingual Support\n\nCurrently, ACE-Step V1 supports multiple languages. When running, the ACE-Step model will obtain the English letters after the conversion of the corresponding different languages, and then generate music.\n\nHowever, currently in ComfyUI, we have not fully implemented the conversion from multiple languages to English letters (Japanese has been implemented at present). Therefore, if you need to use multiple languages for relevant music generation, you need to first convert the corresponding language into English letters, and then input the abbreviation of the corresponding language code at the beginning of the corresponding `lyrics`.\n\nFor example, Chinese `[zh]`, Japanese `[ja]`, Korean `[ko]`, etc.\nFor example:\n```\n[zh]ni hao\n[ja]kon ni chi wa\n[ko]an nyeong\n```\n\n---\n\n### 模型下载\n\n下载下面的模型并保存到 **ComfyUI/models/checkpoints** 文件夹下\n[ace_step_v1_3.5b.safetensors](https://huggingface.co/Comfy-Org/ACE-Step_ComfyUI_repackaged/blob/main/all_in_one/ace_step_v1_3.5b.safetensors)\n\n\n### 多语言支持\n\n目前 ACE-Step V1 是支持多语言的，运行是 ACE-Step 模型会获取到对应的不同语言转换后的英文字母，然后进行音乐生成。\n\n但目前在 ComfyUI 中我们并没有完全实现多语言到英文字母的转换（目前日文已经实现），所以如果你需要使用多语言来进行相关的音乐生成，你需要首先将对应的语言转换成英文字母，然后在对应 `lyrics` 开头输入对应语言代码的缩写。\n\n比如中文`[zh]` 日语 `[ja]` 韩语 `[ko]` 等\n比如：\n```\n[zh]ni hao\n[ja]kon ni chi wa\n[ko]an nyeong\n```"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      23,
+      17,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      80,
+      40,
+      1,
+      14,
+      0,
+      "CLIP"
+    ],
+    [
+      83,
+      40,
+      2,
+      18,
+      1,
+      "VAE"
+    ],
+    [
+      101,
+      3,
+      0,
+      18,
+      0,
+      "LATENT"
+    ],
+    [
+      108,
+      14,
+      0,
+      44,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      109,
+      44,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      110,
+      14,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      111,
+      40,
+      0,
+      45,
+      0,
+      "MODEL"
+    ],
+    [
+      112,
+      45,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      113,
+      18,
+      0,
+      49,
+      0,
+      "AUDIO"
+    ],
+    [
+      126,
+      55,
+      0,
+      51,
+      0,
+      "AUDIO"
+    ],
+    [
+      129,
+      56,
+      0,
+      55,
+      0,
+      "AUDIO"
+    ],
+    [
+      131,
+      18,
+      0,
+      56,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load model here",
+      "bounding": [
+        231.70840454101562,
+        -31.388731002807617,
+        395,
+        181.60000610351562
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "ACE Step",
+      "bounding": [
+        172.51068115234375,
+        -178.27980041503906,
+        1962.6361083984375,
+        1061.9837646484375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "frontendVersion": "1.18.9",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

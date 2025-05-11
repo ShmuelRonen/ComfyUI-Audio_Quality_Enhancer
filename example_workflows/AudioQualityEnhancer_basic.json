@@ -1,0 +1,221 @@
+{
+  "id": "88ac5dad-efd7-40bb-84fe-fbaefdee1fa9",
+  "revision": 0,
+  "last_node_id": 57,
+  "last_link_id": 133,
+  "nodes": [
+    {
+      "id": 57,
+      "type": "LoadAudio",
+      "pos": [
+        473.648681640625,
+        302.8894348144531
+      ],
+      "size": [
+        270,
+        136
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            133
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "0245.mp4",
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 56,
+      "type": "AudioQualityEffects",
+      "pos": [
+        879.3040771484375,
+        302.09039306640625
+      ],
+      "size": [
+        270,
+        322
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 133
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            129
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AudioQualityEffects"
+      },
+      "widgets_values": [
+        0,
+        1,
+        "C:\\Program Files (x86)\\sox-14-4-2\\sox.exe",
+        0,
+        true,
+        false,
+        true,
+        50,
+        50,
+        false,
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "id": 55,
+      "type": "AudioQualityEnhancer",
+      "pos": [
+        1227.1612548828125,
+        299.3606872558594
+      ],
+      "size": [
+        288.751953125,
+        394
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 129
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            126
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "AudioQualityEnhancer"
+      },
+      "widgets_values": [
+        0.5,
+        true,
+        "htdemucs",
+        "cuda",
+        0.8800000000000001,
+        0.6,
+        0.4,
+        0.4,
+        0.4,
+        0.3,
+        0.2,
+        0.3,
+        1,
+        "Standard",
+        true
+      ]
+    },
+    {
+      "id": 51,
+      "type": "PreviewAudio",
+      "pos": [
+        1632.1484375,
+        299.67193603515625
+      ],
+      "size": [
+        270,
+        88
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 126
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.33",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      126,
+      55,
+      0,
+      51,
+      0,
+      "AUDIO"
+    ],
+    [
+      129,
+      56,
+      0,
+      55,
+      0,
+      "AUDIO"
+    ],
+    [
+      133,
+      57,
+      0,
+      56,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "AudioQualityEnhancer",
+      "bounding": [
+        172.51068115234375,
+        -178.27980041503906,
+        1962.6361083984375,
+        1061.9837646484375
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "frontendVersion": "1.18.9",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
