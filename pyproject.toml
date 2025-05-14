@@ -1,0 +1,15 @@
+[project]
+name = "audio_quality_enhancer"
+description = "An extension that's adds advanced audio processing capabilities to ComfyUI with professional-grade audio effects and AI-powered audio enhancement."
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["# Core dependencies", "torch", "numpy", "soundfile", "scipy", "# Audio processing libraries", "librosa", "# recommended for AudioQualityEnhancer", "demucs", "pedalboard"]
+
+[project.urls]
+Repository = "https://github.com/ShmuelRonen/ComfyUI-Audio_Quality_Enhancer"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Audio_Quality_Enhancer"
+Icon = ""
