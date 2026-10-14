@@ -316,8 +316,9 @@ class AudioQualityEnhancer:
             
             # Prepare audio for Demucs
             # Demucs expects audio as [batch, channels, samples]
-            # Convert to torch tensor
-            audio_tensor = torch.tensor(audio, dtype=torch.float32)
+            # htdemucs and friends are stereo models; duplicate mono input
+            model_audio = np.repeat(audio, 2, axis=0) if audio.shape[0] == 1 else audio
+            audio_tensor = torch.tensor(model_audio, dtype=torch.float32)
             if len(audio_tensor.shape) == 2:
                 audio_tensor = audio_tensor.unsqueeze(0)  # Add batch dimension
             
@@ -331,9 +332,9 @@ class AudioQualityEnhancer:
             if sample_rate != model_sample_rate and LIBROSA_AVAILABLE:
                 print(f"Resampling audio from {sample_rate}Hz to {model_sample_rate}Hz for Demucs")
                 resampled_audio = []
-                for ch in range(audio.shape[0]):
+                for ch in range(model_audio.shape[0]):
                     resampled = librosa.resample(
-                        audio[ch], 
+                        model_audio[ch],
                         orig_sr=sample_rate, 
                         target_sr=model_sample_rate
                     )
@@ -416,7 +417,7 @@ class AudioQualityEnhancer:
                 )
             
             # Mix stems back together with appropriate levels
-            result = np.zeros_like(audio)
+            result = np.zeros_like(model_audio)
             for name, stem in enhanced_stems.items():
                 # Ensure the stem is the right shape
                 if stem.shape[1] > result.shape[1]:
@@ -433,6 +434,9 @@ class AudioQualityEnhancer:
             if max_val > 0.98:
                 result = result * (0.98 / max_val)
             
+            if audio.shape[0] == 1:
+                result = result.mean(axis=0, keepdims=True)
+
             return result
             
         except Exception as e:
@@ -833,12 +837,6 @@ class AudioQualityEnhancer:
             # Return original audio on error
             return audio
     
-    def _process_without_separation(self, audio, sample_rate, level=0.5, mode="Standard",
-                                  clarity=0.4, dynamics=0.3, warmth=0.2, air=0.3):
-        """
-        Process audio without source separation - fallback method
-        """
-
 # Register nodes
 NODE_CLASS_MAPPINGS = {
     "AudioQualityEnhancer": AudioQualityEnhancer
